@@ -22,6 +22,13 @@ io.sockets.on('connection', function(socket){
     socket.on("button_clicked", function (data){
         console.log('Somone clicked a button! Reason:' + data.reason);
         socket.emit('server_response', {response: 'sockets are the best!'});
+
+    })
+    socket.on('clicked_button',function(data){
+        console.log(data)
+        console.log('Got some form data');
+        var lucky = Math.floor(Math.random()* 1000);
+        socket.emit('server_response', data, lucky)
     })
 })
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,15 +47,12 @@ app.get('/something', function(req, res) {
  res.render("something", {users: users_array});
 })
 // post route for adding a user
-app.post('/users', function(req, res) {
- console.log("POST DATA", req.body);
- // This is where we would add the user to the database
- // Then redirect to the root route
- users_array.push(req.body)
-
- res.redirect('/something');
-})
+// app.post('/users', function(req, res) {
+//  console.log("POST DATA", req.body);
+//  // This is where we would add the user to the database
+//  // Then redirect to the root route
+//  users_array.push(req.body)
+//
+//  res.redirect('/something');
+// })
 // tell the express app to listen on port 8000
-// app.listen(8000, function() {
-//  console.log("listening on port 8000");
-// });

@@ -11,23 +11,47 @@
             // this triggers the connection event in our server!
             var socket = io.connect();
             // we'll write all the socket stuff after the above line!
+            // RANDOM BUTTON *************
             $('button').click(function(){
                 socket.emit('button_clicked', {reason: 'because I wanted to learn about sockets!'});
             });
-            socket.on('server_response', function(data){
+            socket.on('server_response', function(data, lucky){
+                $('.data').append(
+                    '<h3>You added the following information: name: '+data.name+
+                    ', location: '+data.location+
+                    ', language: '+data.language+
+                    ', comment '+data.comment+'. Your lucky number is '
+                    +lucky+'</h3>');
+                console.log(data);
+                console.log(lucky);
                 console.log('The server says: + data.response');
             });
+            // END RANDOM BUTTON ***********
+
+            // SUBMIT BUTTON
+            $('form').submit(function(){
+                socket.emit('clicked_button',{
+                    name: $('#name').val(),
+                    location: $('#location').val(),
+                    language: $('#language').val(),
+                    comment: $('#comment').val()
+                })
+                return false;
+            })
         });
     </script>
     </head>
     <body>
         <button>A MF BUTTON</button>
+        <div class="data">
+
+        </div>
         <h1>This is a form</h1>
-        <form class="form" action="/users" method="post">
+        <form class="form" action="/" method="post">
             Full Name:
-            <input type="text" name="name">
+            <input id="name" type="text" name="name">
             Doojo Location:
-            <select name="location">
+            <select id="location" name="location">
                 <option>Los Angeles</option>
                 <option>Bay Area</option>
                 <option>Dallas</option>
@@ -36,7 +60,7 @@
                 <option>New York</option>
             </select>
             Favorite Language:
-            <select name="language">
+            <select id="language" name="language">
                 <option>Spanish</option>
                 <option>Javascript</option>
                 <option>Italian</option>
@@ -47,7 +71,7 @@
                 <option>C#</option>
             </select>
             Comment:
-            <textarea name="comment" rows="8" cols="80" placeholder="Comment"></textarea>
+            <textarea id="comment" name="comment" rows="8" cols="80" placeholder="Comment"></textarea>
             <input type="submit" value="Submit">
         </form>
     </body>

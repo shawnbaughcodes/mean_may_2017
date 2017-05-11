@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Something</title>
+    </head>
+    <body>
+        <h1>Form Data</h1>
+        <% for(var i = 0; i < users.length; i++){%>
+            <h4>Name: <%= users[i].name%></h4>
+            <h4>Location: <%= users[i].location%></h4>
+            <h4>Language: <%= users[i].language%></h4>
+            <h4>Comment: <%= users[i].comment%></h4>
+            <%}%>
+            <a href="/"><button name="button">Back</button></a>
+    </body>
+</html>
