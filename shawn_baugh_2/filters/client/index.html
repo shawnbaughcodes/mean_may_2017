@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="angular/angular.js"></script>
+        <script src="angular/app.js"></script>
+        <title>Filtering</title>
+    </head>
+    <body ng-app='app'>
+        <h1>Lets Filter!</h1>
+        <div ng-controller='FriendsController'>
+          Search Friends:
+          <input type="text" ng-model="filter_name">
+          <ul>
+            <li ng-repeat="friend in friends | orderBy:'name' | filter: filter_name track by $index">
+                {{ friend.name }} - age {{ friend.age | number:0 }}, gender {{ friend.gender | uppercase }}
+            </li>
+          </ul>
+        </div>
+    </body>
+</html>
