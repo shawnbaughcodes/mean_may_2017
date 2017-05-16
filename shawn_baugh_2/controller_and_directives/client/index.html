@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>One Page</title>
+        <script src="angular/angular.js"></script>
+        <script src="angular/app.js"></script>
+    </head>
+    <body>
+        <h1>YOOOOOO!!</h1>
+        <div id='main_food' ng-controller="FoodController">
+            <ul>
+                <input type="text" ng-model="foodSearch">
+                <li ng-repeat="item in items | filter: foodSearch track by $index">{{ item.food }}</li>
+            </ul>
+            <form ng-submit='addFood(newFood)'>
+                Favorite Food:
+                <input type="text" ng-model="newFood.food">
+                <input type="submit" value="Add Food">
+            </form>
+            {{ newFood.food }}
+        </div>
+        <div id="more_food" ng-controller="FoodController">
+            <ul ng-init="moreFood()">
+                <li ng-repeat="item in morefood"> {{ item.food }}</li>
+            </ul>
+
+            <button ng-click="changeState()">Change States</button>
+            <h2 ng-if="h2_state === true">I'm conditional. Turn me off</h2>
+
+        </div>
+    </body>
+</html>
