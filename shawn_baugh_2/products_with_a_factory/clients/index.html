@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+    <head>
+        <meta charset="utf-8">
+        <script src="angular/angular.js"></script>
+        <script src="angular/app.js"></script>
+        <title>Products With Factory</title>
+    </head>
+    <body>
+        <h1>Build a Factory!</h1>
+        <div ng-controller="ProductController">
+
+            <form ng-submit='addProduct(newProduct)' ng-init='getProducts()'>
+                Name:
+                <input type="text" ng-model='newProduct.name'>
+                Price:
+                <input type="text" ng-model='newProduct.price'>
+                <input type="submit" value="Add Product">
+            </form>
+
+            <ul>
+                <li ng-repeat='x in products'>
+                    {{ x.name }} |
+                    {{ x.price }} | <a ng-click="deleteProduct()" href="#">Delete</a>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
