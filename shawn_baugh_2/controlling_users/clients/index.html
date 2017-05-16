@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>Users Stuff</title>
+        <script src="angular/angular.js"></script>
+        <script src="angular/app.js"></script>
+    </head>
+    <body>
+        <h1>Users Stuff</h1>
+        <div ng-controller="UsersController">
+            <form ng-submit='addUser(newUser)'>
+                First Name:
+                <input type="text" ng-model="newUser.first_name">
+                Last Name:
+                <input type="text" ng-model="newUser.last_name">
+                Favorite Language:
+                <input type="text" ng-model="newUser.favorite_language">
+                <input type="submit" value="Add New User">
+            </form>
+            <ul>
+                <li ng-repeat='user in users'>
+                    {{ user.first_name }}
+                    {{ user.last_name}}
+                    {{ user.favorite_language }}
+                    <a ng-click="deleteUser(user)" href="#">Delete</a>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
