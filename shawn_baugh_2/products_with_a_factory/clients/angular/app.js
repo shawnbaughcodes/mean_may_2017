@@ -34,6 +34,7 @@ app.factory('ProductFactory',function() {
 
 app.controller('ProductController', function($scope, ProductFactory) {
     console.log('numba 1');
+    
     $scope.getProducts = function() {
         console.log('numba 2');
         ProductFactory.getProducts(function(products) {

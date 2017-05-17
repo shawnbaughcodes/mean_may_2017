@@ -1,0 +1,18 @@
+<div ng-init='getUsers()'>
+    <h1>View Users</h1>
+    <h3>
+        <table>
+            <thead>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Favorite Language</td>
+            </thead>
+            <tbody ng-repeat='user in users'>
+                <td>{{user.fname}}</td>
+                <td>{{user.lname}}</td>
+                <td>{{user.favlanguage}}</td>
+            </tbody>
+        </table>
+
+    </h3>
+</div>
