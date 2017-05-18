@@ -1,0 +1,11 @@
+<div ng-init='PC.getPlayers()'>
+    <form ng-submit='PC.addPlayer()'>
+        Name:
+        <input type="text" ng-model='PC.newPlayer.name'>
+        <input type="submit" value="Add Player">
+    </form>
+    <p ng-repeat='player in PC.players'>
+        {{ player.name }}
+        <a ng-click='PC.deletePlayer(player)' href=""><button> Delete </button></a>
+    </p>
+</div>

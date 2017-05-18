@@ -5,11 +5,11 @@ app.config(function($routeProvider) {
     .when('/partial1',{
         // console.log('p1');
         templateUrl: "partials/customizeUsers.html",
-        controller: 'UserController',
+        controller: 'UserController as UC',
     })
     .when('/partial2',{
         templateUrl: "partials/userList.html",
-        controller: 'UserController'
+        controller: 'UserController as UC'
     })
     .otherwise({
         redirectTo: '/'
@@ -46,22 +46,23 @@ app.factory('UserFactory', function() {
     return factory
 })
 // **************CONTROLLERS****************
-app.controller('UserController', function($scope, UserFactory) {
-    $scope.getUsers = function(){
-        console.log('Get Users');
+app.controller('UserController', function(UserFactory) {
+    var self = this
+    self.getUsers = function(){
+        // console.log('Get Users');
         UserFactory.getUsers(function(users) {
-            $scope.users = users
+            self.users = users
         })
     }
-    $scope.addUser = function() {
-        UserFactory.addUser($scope.newUser)
-        $scope.getUsers();
-        $scope.newUser = {}
-        console.log($scope.newUser);
+    self.addUser = function() {
+        UserFactory.addUser(self.newUser)
+        self.getUsers();
+        self.newUser = {}
+        console.log(self.newUser);
     }
-    $scope.deleteUser = function() {
-        UserFactory.deleteUser($scope.user,function() {
-            $scope.getUsers();
+    self.deleteUser = function() {
+        UserFactory.deleteUser(self.user,function() {
+            self.getUsers();
         })
     }
 })

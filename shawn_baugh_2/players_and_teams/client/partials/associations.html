@@ -1,0 +1,23 @@
+<div ng-init='AC.getAssociations()'>
+    <form ng-submit='AC.addAssociation()'>
+        <!-- SOMETHING NEW TO ME -->
+        <div ng-controller='PlayersController as PC'>
+            <div ng-controller='TeamsController as TC'>
+                Name:
+                <select ng-model='AC.newAssociation.pname' ng-init='PC.getPlayers()'>
+                    <option ng-repeat='x in PC.players'>{{x.name}}</option>
+                </select>
+                Team:
+                <select ng-model='AC.newAssociation.tname' ng-init='TC.getTeams()'>
+                    <option ng-repeat='x in TC.teams'>{{x.name}}</option>
+            </select>
+            </div>
+        </div>
+        <input type="submit" value="Add Association">
+    </form>
+    <p ng-repeat='x in AC.associations'>
+        Player: {{ x.pname }} |
+        Team: {{ x.tname }}
+        <a ng-click='AC.deleteAssociation()' href=""><button> Delete </button></a>
+    </p>
+</div>

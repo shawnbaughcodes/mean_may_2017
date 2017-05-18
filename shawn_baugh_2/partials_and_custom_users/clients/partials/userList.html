@@ -1,4 +1,4 @@
-<div ng-init='getUsers()'>
+<div ng-init='UC.getUsers()'>
     <h1>View Users</h1>
     <h3>
         <table>
@@ -7,7 +7,7 @@
                 <td>Last Name</td>
                 <td>Favorite Language</td>
             </thead>
-            <tbody ng-repeat='user in users'>
+            <tbody ng-repeat='user in UC.users'>
                 <td>{{user.fname}}</td>
                 <td>{{user.lname}}</td>
                 <td>{{user.favlanguage}}</td>

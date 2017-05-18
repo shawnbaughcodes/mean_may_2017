@@ -1,0 +1,11 @@
+<div ng-init='TC.getTeams()'>
+    <form ng-submit='TC.addTeam()'>
+        Name:
+        <input type="text" ng-model='TC.newTeam.name'>
+        <input type="submit" value="Add Team">
+    </form>
+    <p ng-repeat='team in TC.teams'>
+        {{ team.name }}
+        <a ng-click='TC.deleteTeam()' href=""><button> Delete </button></a>
+    </p>
+</div>

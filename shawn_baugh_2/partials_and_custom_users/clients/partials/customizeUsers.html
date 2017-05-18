@@ -1,20 +1,20 @@
-<div ng-init='getUsers()'>
+<div ng-init='UC.getUsers()'>
 <h1>Customize Users</h1>
-<form ng-submit='addUser()'>
+<form ng-submit='UC.addUser()'>
     FName:
-    <input type="text" ng-model='newUser.fname'>
+    <input type="text" ng-model='UC.newUser.fname'>
     LName:
-    <input type="text" ng-model='newUser.lname'>
+    <input type="text" ng-model='UC.newUser.lname'>
     Fav Languave:
-    <input type="text" ng-model='newUser.favlanguage'>
+    <input type="text" ng-model='UC.newUser.favlanguage'>
     <input type="submit" value="Create User">
 </form>
 <h4>Users</h4>
-<p ng-repeat='user in users'>
+<p ng-repeat='user in UC.users'>
     First Name: {{user.fname}} |
     Last Name: {{user.lname}} |
     Favorite Language: {{user.favlanguage}} |
-    <a ng-click='deleteUser()' href=""><button>Delete</button></a>
+    <a ng-click='UC.deleteUser()' href=""><button>Delete</button></a>
 </p>
 
 </div>
