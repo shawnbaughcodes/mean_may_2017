@@ -7,7 +7,6 @@ console.log('connecting to database...')
 mongoose.connect('mongodb://localhost/full_mean_friends')
 
 var models_path = path.join(__dirname, './../models');
-// var controllers_path = path.join(__dirname, './../controllers');
 
 fs.readdirSync(models_path).forEach(function(file) {
     if(file.indexOf('js') >= 0){
