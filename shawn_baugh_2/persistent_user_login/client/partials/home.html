@@ -1,0 +1,6 @@
+<h1>Home!</h1>
+<div ng-init='UC.session()'>
+    Index
+    <p ng-repeat='user in UC.users'>{{ user.first_name }} {{ user.last_name }} | {{ user.email }} </p>
+    <a href="#" ng-click='UC.logout()'><button>Logout</button></a>
+</div>
