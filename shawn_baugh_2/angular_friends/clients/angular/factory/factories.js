@@ -1,3 +1,4 @@
+
 app.factory('FriendFactory', function(callback){
     var factory = {}
     factory.friends =[
