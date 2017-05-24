@@ -1,0 +1,31 @@
+<div ng-init='UC.session()'>
+    <h1>Dat Wall</h1>
+    <h3>Hello {{UC.current_user.username}}</h3>
+    <button ng-click='UC.logout()'>Logout</button>
+    <hr>
+    <div ng-controller='MessagesController as MC'>
+        <p ng-repeat='error in MC.new_messages_errors'>{{ error }}</p>
+        <form ng-submit='MC.create(MC.newMessage)'>
+            Message:
+            <textarea ng-model='MC.newMessage.message' rows="8" cols="80" placeholder="Enter message here..."></textarea>
+            <input type="submit" value="Submit">
+        </form>
+        <div ng-init='MC.index()'>
+            <div ng-repeat='message in MC.messages', ng-init='index = $index'>
+                <h4>{{ message.user.fullname }} - {{ message.user.createdAt }}</h4>
+                <p>{{ message.message }}</p>
+                <div ng-repeat='comment in message.comments'>
+                    <h5>{{ comment.user.username }} - {{ comment.createdAt }}</h5>
+                    <em><p>{{ comment.comment }}</p></em>
+                </div>
+                <div>
+                    <form ng-submit='MC.createComment(MC.newComment, index, message._id) '>
+                        Comment:
+                        <textarea ng-model='MC.newComment[index].comment' rows="4" cols="40"></textarea>
+                        <input type="submit"  value="Add Comment">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,10 +13,7 @@ app.controller('UsersController', function(UserFactory, $cookies, $location){
         }
     }
 
-    self.logout = function(){
-        $cookies.remove('user_id')
-        $location.url('/')
-    }
+
 
     self.login = function(loginUser) {
         self.login_errors = []
